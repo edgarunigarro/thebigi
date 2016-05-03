@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+<h1>BotAlpha</h1>
+<p>Pregunta algo sobre el banco:</p>
+
+<input id="pregunta">
+
+<input type="button" value="Abre el Bot" onclick="openWin()">
+
+</body>
+
+<script>
+function openWin() {
+var x = "";
+var texto;
+
+x = document.getElementById("pregunta").value;
+
+texto = "https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+x;
+    window.open(texto);
+}
+</script>
+</head>
+
+</html>
