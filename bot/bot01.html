@@ -10,9 +10,9 @@ title: Bot Alpha
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.get("https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q=cuando%20pago?", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-$("div").text(data.intents[0].intent);
+        $.get("https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").attr("text"), 
+        function(data, status){
+        $("div").text(data.intents[0].intent);
     });
     });
 });
@@ -20,7 +20,8 @@ $("div").text(data.intents[0].intent);
 </head>
 <body>
 
-<button>Send an HTTP GET request to a page and get the result back</button>
+<input id="pregunta">
+<button>Preguntale al Bot!</button>
 
 <div></div>
 
