@@ -12,6 +12,18 @@ $(document).ready(function(){
         $.get("https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").val(), 
         function(data, status){
         $("#bot").text("Quiso decir: "data.intents[0].intent + " Probabilidad" + data.intents[0].score);
+        
+    switch(data.intents[0].intent) {
+    case "Saludo":
+        $("#bot1").text("Hola, en que te puedo ayudar");
+        break;
+    case "FechaPago":
+        $("#bot1").text("tu proximo pago es 4/05/2016");
+        break;
+    default:
+        default $("#bot1").text("No entendi");
+}
+        
     });
     });
 });
@@ -26,6 +38,7 @@ $(document).ready(function(){
 <button>Preguntale al Bot!</button>
 
 <p><a id="bot">Hola</a></p>
+<p><a id="bot1"></a></p>
 
 </body>
 </html>
