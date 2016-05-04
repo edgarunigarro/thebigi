@@ -1,0 +1,28 @@
+---
+layout: default
+title: Bot Alpha
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.get("https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q=cuando%20pago?", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+$("div").text(data.intents[0].intent);
+    });
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP GET request to a page and get the result back</button>
+
+<div></div>
+
+</body>
+</html>
