@@ -18,16 +18,22 @@ $(document).ready(function(){
          $("#bot1").text("Hola, en que puedo ayudar");
         break;
     case "Saldo":
-         $("#bot1").text("Hola, en que puedo ayudar");
+         $("#bot1").text("se mas especifico en tus palabras");
         break;
     case "None":
-         $("#bot1").text("Hola, en que puedo ayudar");
+         $("#bot1").text("No entendi, intenta de nuevo");
+        break;    
+    case "SaldoCuentaBanco":
+         $("#bot1").text("En tu cuenta del banco hay mucho dinero");
+        break;
+    case "SaldoTarjetaCredito":
+         $("#bot1").text("Tu saldo disponible es $1.030.000, debes $80.000");
         break;
     case "FechaPago":
          $("#bot1").text("Tu proximo pago es 4/05/2016");
         break;
     default:
-        $("#bot1").text("No entendi");
+        $("#bot1").text("No entendi, intenta de nuevo");
 }
 
     });
