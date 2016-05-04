@@ -2,7 +2,6 @@
 layout: default
 title: Bot Alpha
 ---
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +9,9 @@ title: Bot Alpha
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.get("https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").attr("text"), 
+        $.get("https://api.projectoxford.ai/luis/v1/application?id=c3a7c7b8-797e-4a92-9ed6-0eaa3801e770&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").val(), 
         function(data, status){
-        $("#bot").text(data.intents[0].intent);
+        $("#bot").text(data.intents[0].intent + "" + data.intents[0].score+$("#pregunta").val());
     });
     });
 });
