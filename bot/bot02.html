@@ -1,0 +1,55 @@
+---
+layout: default
+title: Bot Alpha
+---
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.get("https://api.projectoxford.ai/luis/v1/application?id=9d7ca3d1-e9da-4552-9c20-f0cd6f4e83dc&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06="+$("#pregunta").val(), 
+        function(data, status){
+        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score + " Estado"+ status));
+        
+    switch(data.intents[0].intent ) {
+    case "Saludo":
+         $("#bot1").text("Hola, en que puedo ayudar");
+        break;
+    case "Saldo":
+         $("#bot1").text("se mas especifico en tus palabras");
+        break;
+    case "None":
+         $("#bot1").text("No entendi, intenta de nuevo");
+        break;    
+    case "SaldoCuentaBanco":
+         $("#bot1").text("En tu cuenta del banco hay mucho dinero");
+        break;
+    case "SaldoTarjetaCredito":
+         $("#bot1").text("Tu saldo disponible es $1.030.000, debes $80.000");
+        break;
+    case "FechaPago":
+         $("#bot1").text("Tu proximo pago es 4/05/2016");
+        break;
+    default:
+        $("#bot1").text("No entendi, intenta de nuevo");
+}
+    });
+    });
+});
+</script>
+</head>
+<body>
+
+<h1>BotAlpha</h1>
+<p>Informacion claves:</p>
+
+<input id="pregunta">
+<button>Preguntale al Bot!</button>
+
+<p><a id="bot">Hola</a></p>
+<p><a id="bot1"></a></p>
+
+</body>
+</html>
