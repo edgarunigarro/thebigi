@@ -15,10 +15,16 @@ $(document).ready(function(){
 
     if (data.entities[0].entity!=null){
         $("#botentity").text(data.entities[0].type + " " + data.entities[0].entity)
+    } else
+    {
+        $("#botentity").text("");
     }
 
     if (data.entities[1].entity!=null){
         $("#botentity").text(data.entities[1].type + " " + data.entities[1].entity)
+    }else
+    {
+        $("#botentity").text("");
     }
         
     switch(data.intents[0].intent ) {
