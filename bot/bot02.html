@@ -9,9 +9,9 @@ title: Bot Alpha
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.get("https://api.projectoxford.ai/luis/v1/application?id=9d7ca3d1-e9da-4552-9c20-f0cd6f4e83dc&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").val(), 
+        $.get("https://api.projectoxford.ai/luis/v1/application?id=fd166572-cfdc-49de-8513-dcf894b29a63&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").val(), 
         function(data, status){
-        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score + " Estado"+ status));
+        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score + data.entities[0].entity + data.entities[1].entity + " Estado "+ status));
         
     switch(data.intents[0].intent ) {
     case "Saludo":
