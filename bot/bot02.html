@@ -11,7 +11,15 @@ $(document).ready(function(){
     $("button").click(function(){
         $.get("https://api.projectoxford.ai/luis/v1/application?id=fd166572-cfdc-49de-8513-dcf894b29a63&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").val(), 
         function(data, status){
-        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score + data.entities[0].type + " " + data.entities[0].entity + " " + data.entities[1].type + " " + data.entities[1].entity));
+        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score));
+
+    if (data.entities[0].entity!=null){
+        $("#botentity").text(data.entities[0].type + " " + data.entities[0].entity)
+    }
+
+    if (data.entities[1].entity!=null){
+        $("#botentity").text(data.entities[1].type + " " + data.entities[1].entity)
+    }
         
     switch(data.intents[0].intent ) {
     case "Saludo":
@@ -51,8 +59,9 @@ $(document).ready(function(){
 <input id="pregunta">
 <button>Preguntale al Bot!</button>
 
-<p><id="bot1">Hola</p>
+<p><a id="bot1">Hola</a></p>
 <p><a id="bot"></a></p>
+<p><a id="botentity"></a></p>
 
 </body>
 </html>
