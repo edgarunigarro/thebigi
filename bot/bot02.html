@@ -11,26 +11,29 @@ $(document).ready(function(){
     $("button").click(function(){
         $.get("https://api.projectoxford.ai/luis/v1/application?id=fd166572-cfdc-49de-8513-dcf894b29a63&subscription-key=64dba8a963ce4a1b9a2316d592d9fe06&q="+$("#pregunta").val(), 
         function(data, status){
-        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score + data.entities[0].entity + data.entities[1].entity + " Estado "+ status));
+        $("#bot").text(("Quiso decir: "+ data.intents[0].intent + " Probabilidad " + data.intents[0].score + data.entities[0].type + " " + data.entities[0].entity + " " + data.entities[1].type + " "+ data.entities[1].entity ));
         
     switch(data.intents[0].intent ) {
     case "Saludo":
          $("#bot1").text("Hola, en que puedo ayudar");
         break;
-    case "Saldo":
-         $("#bot1").text("se mas especifico en tus palabras");
+    case "CambioClave":
+         $("#bot1").text("Tu clave sera cambiada");
         break;
     case "None":
          $("#bot1").text("No entendi, intenta de nuevo");
         break;    
-    case "SaldoCuentaBanco":
+    case "ConsultaSaldo":
          $("#bot1").text("En tu cuenta del banco hay mucho dinero");
         break;
-    case "SaldoTarjetaCredito":
-         $("#bot1").text("Tu saldo disponible es $1.030.000, debes $80.000");
+    case "Reposicion":
+         $("#bot1").text("Pronto llegara tu nueva tarjeta");
         break;
-    case "FechaPago":
-         $("#bot1").text("Tu proximo pago es 4/05/2016");
+    case "Requisitos":
+         $("#bot1").text("Enviaremos la informacion solicitada a tu correo");
+        break;
+    case "Definicion":
+         $("#bot1").text("Enviaremos la informacion solicitada a tu correo");
         break;
     default:
         $("#bot1").text("No entendi, intenta de nuevo");
@@ -48,8 +51,8 @@ $(document).ready(function(){
 <input id="pregunta">
 <button>Preguntale al Bot!</button>
 
-<p><a id="bot">Hola</a></p>
-<p><a id="bot1"></a></p>
+<p><id="bot1">Hola</p>
+<p><a id="bot"></a></p>
 
 </body>
 </html>
